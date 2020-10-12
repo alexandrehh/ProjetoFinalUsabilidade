@@ -1,4 +1,23 @@
+body {
+  background-image: url("/public/img/pet_login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
+.card {
+  background-image: url("/public/img/fundoBrancoSeg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
 .card-size {
-  max-width:500px;
+  max-width: 500px; 
+  margin: auto;
+}
+
+.card_interno { 
+  max-width: 350px;
   margin: auto;
 }

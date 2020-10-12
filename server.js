@@ -18,3 +18,9 @@ app.listen(port, () => {
 app.get("/", (req,res) =>{   
     res.sendFile(__dirname + "/html/login.html");       
 });
+
+/**EndPoint Agendamento */ 
+
+app.get("/agendamento", (req,res) =>{   
+    res.sendFile(__dirname + "/html/agendamento.html");       
+});

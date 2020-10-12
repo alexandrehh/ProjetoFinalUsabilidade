@@ -1,53 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetUmHorario - Login</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link rel="stylesheet" href="/public/css/login.css" />
-    <title>PetUmHorario - Login</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/public/js/login.js"></script>
+    
 </head>
 <body>
-    <header>
-        <div class="text-center pt-4 pb-4">...</div>
-    </header>
-
-    <div class="container mw-5 p-5 align-middle min-vh-100">
-        
-        <div class="card card-size py-5 px-4">
+    <div class="container-fluid mw-5 p-5 align-middle min-vh-100">        
+        <div class="card card-size my-5 py-5 px-4">
             <div class="d-flex justify-content-center mb-2">
                 <h3>PetUmHorario</h1>
             </div>
-    
-            <div class="d-flex justify-content-center">
-                <form action="/" method="POST">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text bg-transparent border-right-0 pr-0">👤</span>
-                        </div>
-                        <input type="text" name="login" class="form-control border-left-0" placeholder="Login">
+            <div class="card_interno">
+                <div id="div_login" class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent border-right-0 pr-0">👤</span>
                     </div>
+                    <input id="input_login" type="text" name="login" class="form-control border-left-0" placeholder="Login">
+                </div>
+                <span id="feedbackLogin" class="feedback_tela_login"></span>
     
-                    <div class="input-group mb-0">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text bg-transparent border-right-0 pr-0">🔐</span>
-                        </div>
-                        <input required type="password" name="password" class ="form-control border-left-0" placeholder="Senha" />
+                <div id="div_senha" class="input-group mb-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent border-right-0 pr-0">🔐</span>
                     </div>
+                    <input id="input_senha" type="password" name="password" class ="form-control border-left-0" placeholder="Senha" />
+                </div>
+                <span id="feedbackSenha" class="feedback_tela_login"></span>
     
-                    <div class="d-flex flex-column">
-                        <a href="#" class="small d-flex justify-content-end my-1">Esqueci a senha</a>
-                        <button type="submit" class="btn btn-primary mb-3">Login</button>
-                        <a href="#" class="btn btn-danger mb-3">Cadastre-se</a> 
-                    </div>
-                </form>
+                <div class="d-flex flex-column">
+                    <a href="" class="small d-flex justify-content-end my-1">Esqueci a senha</a>
+                    <button id="login" class="btn btn-primary mb-3">Login</button>
+                    <button id="novo_usuario" class="btn btn-danger mb-3">Cadastre-se</a> 
+                </div> 
             </div>
-        </div>        
-
+        </div>
     </div>
-
-    <footer>
-        <div class="text-center pt-4 pb-4">© ...</div>
-    </footer>
 </body>
 </html>
