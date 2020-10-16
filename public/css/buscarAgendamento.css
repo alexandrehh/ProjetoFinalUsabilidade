@@ -1,0 +1,28 @@
+body {
+    background-image: url("/public/img/pet_login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    
+}
+
+.tbody_table {
+    background-image: url("/public/img/fundoBrancoSeg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;   
+}
+
+.button_search {
+    font-family: Arial;
+    font-size: 15px;
+}
+
+.input_search {
+    font-family: Arial;
+    font-style: oblique;
+}   
+
+.tr_title_table {
+    font-family: Arial; 
+}

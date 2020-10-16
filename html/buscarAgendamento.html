@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Agendamentos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />    
+    <link rel="stylesheet" href="/public/css/buscarAgendamento.css"></link>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <blockquote class="blockquote text-center my-3">
+            <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
+        </blockquote>        
+    </div>    
+    <div class="container"> 
+        <div class="input-group mb-5 my-5">
+            <input type="text" class="form-control input_search" placeholder="Digite aqui nome do seu pet">
+            <div class="input-group-append">
+              <button class="btn btn btn-dark button_search" type="button">Button</button>
+            </div>
+        </div>
+    </div>     
+    <div class="container-fluid">   
+        <div  class="table-responsive-sm">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr class="tr_title_table">
+                        <th scope="col">Registro</th>
+                        <th scope="col">Pet</th>
+                        <th scope="col">Raça</th>
+                        <th scope="col">idade</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Dono</th>
+                        <th scope="col">Horário</th>
+                    </tr>                    
+                </thead>
+                <tbody class="tbody_table">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Nescau</td>
+                        <td>Pinscher</td>
+                        <td>2 anos</td>
+                        <td>Banho</td>
+                        <td>João da Silva</td>
+                        <td>14:45</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Toddy</td>
+                        <td>Yorkshire</td>
+                        <td>1 ano</td>
+                        <td>Banho e Tosa</td>
+                        <td>Maria João</td>
+                        <td>15:45</td>
+                    </tr>                          
+                </tbody>
+            </table>
+        </div>             
+    </div>
+</body>
+</html>
