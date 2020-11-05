@@ -24,3 +24,9 @@ app.get("/", (req,res) =>{
 app.get("/agendamento", (req,res) =>{   
     res.sendFile(__dirname + "/html/agendamento.html");       
 });
+
+/**EndPoint Buscar Horarios */
+
+app.get("/buscarhorario", (req, res) => {
+    res.sendFile(__dirname + '/html/buscarAgendamento.html');
+})

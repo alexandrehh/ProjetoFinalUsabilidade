@@ -3,6 +3,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   border: none;
+
+  font-family: 'Segoe UI';
+  overflow-y: hidden;
 }
 
 .card {
@@ -19,7 +22,22 @@ body {
 
 .card_interno { 
   max-width: 350px;
-  margin: auto;
+  margin: auto;  
+}
+
+.type-of-field {
+  background-color: #acf69f;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;  
+}
+
+.asterisk {
+  color: red;
+}
+
+.button-position {  
+  float: right;
 }
 
 .button-style {

@@ -5,34 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/public/css/agendamento.css" />
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/public/js/agendamento.js"></script>
 </head>
 <body>
-    <div class="box">
-        <h1>Agendamento</h1>
-        <form>
-            <div class="Input-CPF">
-                <label>CPF</label>
-                <input type="number" name="" required="">
+    <div class="container-fluid py-3 align-middle">
+        <div class="card card-size my-5 py-4 px-5">        
+            <div class="d-flex justify-content-center mb-5">
+                <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
             </div>
-            <div class="Input-Medico">
-                <label>Médico</label>
-                <input type="text" name="" required="">
-            </div>
-            <div class="Input-Horario">
-                <label>Horário</label>
-                <input type="date" name="" required="">
-            </div>
-            <div class="Input-Descricao">
-                <label>Descrição</label>
-                <input type="text" name="" required="">
-            </div>
-            <div class="Input-Button">
-                <button class="btn-voltar">Voltar</button>
-                <button class="btn-limpar">Limpar</button>
-                <button class="btn-concluir">Concluir</button>
-            </div>              
-        </form>
-    </div>
+            <div class="card-interno">
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text type-of-field" ><i class="asterisk">*</i> Nome do Pet</span>
+                    </div>
+                    <input type="text" required class="form-control" placeholder="Digite nome do pet" aria-label="Digite nome do pet" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text type-of-field"><i class="asterisk">*</i> Raça do pet</span>
+                    </div>
+                    <input type="text" required class="form-control" placeholder="Digite a raça do pet" aria-label="Digite a raça do pet" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-4">                                       
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text type-of-field" for="inputGroupSelect01"><i class="asterisk">*</i> Serviços Pet</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" required>
+                          <option selected> --Selecione uma opção-- </option>
+                          <option value="1">Banho</option>
+                          <option value="2">Tosa</option>
+                          <option value="3">Banho e Tosa</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="input-group mb-5">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text type-of-field"><i class="asterisk"> *</i> Data/Hora</span>
+                    </div>
+                    <input type="datetime-local" required class="form-control" aria-describedby="basic-addon1">
+                </div>  
+                <div class="button-position">
+                    <button id="buscar-horario" type="button" class="btn button-style">Buscar Horários</button>           
+                    <button id="salvar-horario" type="button" class="btn button-style">Salvar Horário</button>
+                </div>                                    
+            </div>           
+        </div>        
+    </div>   
 </body>
 </html>

@@ -4,6 +4,15 @@ body {
     background-size: cover;
     border: none;
     
+    font-family: 'Segoe UI';
+}
+
+table {
+    width: 50% !important;
+}
+
+.input-group {
+    width: 50% !important;
 }
 
 .tbody_table {
@@ -13,16 +22,27 @@ body {
     border: none;   
 }
 
-.button_search {
-    font-family: Arial;
-    font-size: 15px;
+.button_search { 
+    font-size: 16px;
+    background-color: #828282;
+    color: white;       
+}
+
+.button_search:hover {     
+    background-color:  #828282;
+    color: white;
+    font-weight: 600;      
+}
+
+.thead-style {
+    background-color: #828282;
+    color: white;    
 }
 
 .input_search {
-    font-family: Arial;
-    font-style: oblique;
+       
 }   
 
 .tr_title_table {
-    font-family: Arial; 
+     text-align: center;
 }
