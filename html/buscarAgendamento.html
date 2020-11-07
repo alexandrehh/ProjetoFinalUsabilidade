@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/buscarAgendamento.css"></link>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/public/js/buscarAgendamento.js"></script>
     
 </head>
 <body>
@@ -19,30 +20,21 @@
     </div>    
     <div class="container"> 
         <div class="input-group mb-5 my-5 mx-auto">
-            <input type="text" class="form-control input_search" placeholder="Digite aqui nome do seu pet">
+            <input id="input-buscar-horario" type="text" class="form-control input_search" placeholder="Digite aqui nome do seu pet">
             <div class="input-group-append">
-              <button class="btn button_search" type="button">Buscar</button>
+              <button id="buscar-horario" class="btn button_search" type="button">Buscar</button>
             </div>
         </div>
     </div>     
-    <div class="container-fluid">   
-        <div  class="table-responsive-sm-">
-            <table class="table table-hover mx-auto">
-                <thead class="thead-style">
-                    <tr class="tr_title_table">
-                        <th scope="col-sm-4">Horários</th>                        
-                    </tr>                    
-                </thead>
-                <tbody class="tbody_table">
-                    <tr>                        
-                        <td>Nescau - 12/12/2020 14:45</td>                    
-                    </tr>
-                    <tr>                        
-                        <td>Toddy - 15/12/2020 15:30</td>                        
-                    </tr>                          
-                </tbody>
-            </table>
-        </div>             
+    <div class="container-fluid">       
+        <table class="table mx-auto">
+            <thead class="thead-style">
+                <tr class="tr_title_table">
+                    <th>Horários</th>                                     
+                </tr>                    
+            </thead>
+            <tbody id="tbody-table" class="tbody_table"></tbody>
+        </table>                    
     </div>
 </body>
 </html>

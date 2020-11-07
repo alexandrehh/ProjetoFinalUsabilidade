@@ -11,50 +11,67 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/public/js/agendamento.js"></script>
 </head>
-<body>
-    <div class="container-fluid py-3 align-middle">
-        <div class="card card-size my-5 py-4 px-5">        
-            <div class="d-flex justify-content-center mb-5">
-                <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
-            </div>
-            <div class="card-interno">
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text type-of-field" ><i class="asterisk">*</i> Nome do Pet</span>
-                    </div>
-                    <input type="text" required class="form-control" placeholder="Digite nome do pet" aria-label="Digite nome do pet" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text type-of-field"><i class="asterisk">*</i> Raça do pet</span>
-                    </div>
-                    <input type="text" required class="form-control" placeholder="Digite a raça do pet" aria-label="Digite a raça do pet" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-4">                                       
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text type-of-field" for="inputGroupSelect01"><i class="asterisk">*</i> Serviços Pet</label>
-                        </div>
-                        <select class="custom-select" id="inputGroupSelect01" required>
-                          <option selected> --Selecione uma opção-- </option>
-                          <option value="1">Banho</option>
-                          <option value="2">Tosa</option>
-                          <option value="3">Banho e Tosa</option>
-                        </select>
+<body>  
+  <div class="container-fluid py-3 align-middle">
+      <div class="card card-size my-5 py-4 px-5">        
+          <div class="d-flex justify-content-center mb-5">
+              <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
+          </div>
+          <div class="card-interno">
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text type-of-field" ><i class="asterisk">*</i> Nome do Pet</span>
+                  </div>
+                  <input id="nome-pet" type="text" required class="form-control" placeholder="Digite nome do pet" aria-label="Digite nome do pet" aria-describedby="basic-addon1" style="display: block;">                 
+              </div>
+              <span id="feedback-nome-pet" class="feedback"></span>                               
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text type-of-field"><i class="asterisk">*</i> Raça do pet</span>                      
+                  </div>
+                  <input id="raca-pet" type="text" required class="form-control" placeholder="Digite a raça do pet" aria-label="Digite a raça do pet" aria-describedby="basic-addon1">
+              </div>                
+              <span id="feedback-raca-pet" class="feedback"></span> 
+              <div class="input-group mb-4">                                       
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text type-of-field" for="servico-pet"><i class="asterisk">*</i> Serviços Pet</label>
                       </div>
-                </div>
-                <div class="input-group mb-5">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text type-of-field"><i class="asterisk"> *</i> Data/Hora</span>
+                      <select class="custom-select" id="servico-pet" required>
+                        <option selected> --Selecione uma opção-- </option>
+                        <option value="banho">Banho</option>
+                        <option value="tosa">Tosa</option>
+                        <option value="banho-tosa">Banho e Tosa</option>
+                      </select>                        
                     </div>
-                    <input type="datetime-local" required class="form-control" aria-describedby="basic-addon1">
-                </div>  
-                <div class="button-position">
-                    <button id="buscar-horario" type="button" class="btn button-style">Buscar Horários</button>           
-                    <button id="salvar-horario" type="button" class="btn button-style">Salvar Horário</button>
-                </div>                                    
-            </div>           
-        </div>        
-    </div>   
+              </div>
+              <span id="feedback-servico-pet" class="feedback"></span>
+              <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text type-of-field"><i class="asterisk"> *</i> Data/Hora</span>
+                  </div>
+                  <input id="data-hora" type="datetime-local" required class="form-control" aria-describedby="basic-addon1">                    
+              </div>                 
+              <span id="feedback-data-hora" class="feedback"></span>  
+              <div class="button-position">
+                  <button id="buscar-horario" type="button" class="btn button-style">Buscar Horários</button>           
+                  <button id="salvar-horario" type="button" class="btn button-style" data-toggle="modal" data-target="exampleModal">Salvar Horário</button>
+              </div>                                    
+          </div>           
+      </div>        
+  </div> 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"></div>       
+      </div>
+    </div>
+  </div>  
 </body>
 </html>

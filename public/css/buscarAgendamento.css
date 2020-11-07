@@ -37,12 +37,16 @@ table {
 .thead-style {
     background-color: #828282;
     color: white;    
+    text-align: center;
 }
 
-.input_search {
-       
-}   
-
-.tr_title_table {
-     text-align: center;
+.button-style-row {
+    background-color:  #828282;
+    color: white;
+    font-weight: 600;  
+    float: right;
+    margin-left: 5px;
+    border-radius: 5px;
+    padding: 3px 8px 3px 8px;
+    font-size: 12px;
 }
