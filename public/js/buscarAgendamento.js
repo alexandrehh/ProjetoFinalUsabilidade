@@ -10,10 +10,15 @@ $(document).ready(() => {
         }
     });
 
+    $('#novo-agendamento').on('click', () => {
+        window.location.href = '/agendamento';
+    })
+
     function buscarHorarioPet(nomePet) {
         $.ajax({
             url: '/buscarhorario/' + nomePet,
-            success: (response) => {                
+            success: (response) => {
+                removerValoresDaTabela();               
                 adicionarValoresNaTabela(response);                
             },
             error: (response) => {
@@ -24,82 +29,82 @@ $(document).ready(() => {
     }
 
     function adicionarValoresNaTabela(horarios) {
-        addLinhaTabela(horarios);            
+        for(let i=0; i < horarios.length; i++) {
+            let contador = i +  1;
+            addValorNaTabela(horarios[i], contador);   
+        }                 
     }
 
     function removerValoresDaTabela() {
         let tbodyTable = $('#tbody-table')[0];
 
-        if(tbodyTable.rows.length > 0) { 
-            for(let i=0; i < tbodyTable.rows.length; i++) { 
-                let linhaTabela = tbodyTable.rows[i] !== null ? tbodyTable.rows[i] : "";
-                linhaTabela.remove();
-            }
+        while(tbodyTable.rows.length > 0) {
+            tbodyTable.deleteRow(0);
         }
     }    
 
-    function addLinhaTabela(horario) {
-
-        let contador = 1;
+    function addValorNaTabela(horario, contador) {
 
         if(horario) {
             let insereNaTela = true;
-            let tbodyTable = $('#tbody-table')[0];
+            let tbodyTable = $('#tbody-table')[0];            
 
-            if(tbodyTable.rows.length > 0) {
-
-                for(let i=0; i < tbodyTable.rows.length; i++) {
-
-                    let dataHoraPet = horario.nomePet + ' - ' + horario.dataHora;
-                    let linhaTabelaTD = tbodyTable.rows[i] !== null  && tbodyTable.rows[i].querySelector('td');
-                    let linhaTabelaTR = tbodyTable.rows[i] !== null ? tbodyTable.rows[i] : "";
-                    let existeValorNaTabela = linhaTabelaTD.innerText.includes(dataHoraPet);
-                    
-                    if(existeValorNaTabela) {
-                        insereNaTela = false;
-                        break;
-                    } else {
-                        linhaTabelaTR.remove();
-                    }                 
-                }
-            }
+            insereNaTela = verificarSeOValorEstaNaTabela(tbodyTable, horario);
 
             if(insereNaTela) {
-                let tr = document.createElement('tr');
-                let td = document.createElement('td');
-                let buttonVerInfos = document.createElement('button');
-                let buttonRemoverInfo = document.createElement('button');
-
-                tr.setAttribute('id', 'tr_' + horario.nomePet + '_' + contador);
-                td.setAttribute('id', 'td_' + horario.nomePet + '_' + contador);
-                td.innerHTML = horario.nomePet + ' - ' + horario.dataHora;
-
-                buttonVerInfos.setAttribute('id', 'view_' + horario.nomePet + '_' + contador);
-                buttonVerInfos.setAttribute('type', 'button');
-                buttonVerInfos.setAttribute('class', 'btn button-style-row');        
-                buttonVerInfos.innerHTML = 'Infos';
-
-                buttonRemoverInfo.setAttribute('id', 'remove_' + horario.nomePet + '_' + contador);
-                buttonRemoverInfo.setAttribute('type', 'button');
-                buttonRemoverInfo.setAttribute('class', 'btn button-style-row');     
-                buttonRemoverInfo.setAttribute('onclick', 'removerLinhaTabela(event);');  
-                buttonRemoverInfo.innerHTML = 'Remover';
-            
-                tbodyTable.append(tr);
-                tr.append(td);
-                td.appendChild(buttonRemoverInfo); 
-                td.appendChild(buttonVerInfos); 
-
-                inserirNomePetNoLocalStorage(horario.nomePet + ' - ' + horario.dataHora);
-
-                contador ++;
+                addLinhaNaTabela(tbodyTable, horario, contador);                            
             }            
         }                                
     }
 
-    function inserirNomePetNoLocalStorage(dataHoraPet) {
-        localStorage.setItem('dataHoraPet', dataHoraPet);
+    function verificarSeOValorEstaNaTabela(tbodyTable, horario) {
+
+        let insereNaTela = true;        
+
+        if(tbodyTable.rows.length > 0) {
+
+            for(let i=0; i < tbodyTable.rows.length; i++) {
+
+                let dataHoraPet = horario.nomePet + ' - ' + horario.dataHora;
+                let linhaTabelaTD = tbodyTable.rows[i] !== null  && tbodyTable.rows[i].querySelector('td');                
+                let existeValorNaTabela = linhaTabelaTD.innerText.includes(dataHoraPet);
+                
+                if(existeValorNaTabela) {
+                    insereNaTela = false;
+                    break;
+                } 
+            }
+        }
+
+        return insereNaTela;
     }
+
+    function addLinhaNaTabela(tbodyTable, horario, contador) {        
+        let tr = document.createElement('tr');
+        let td = document.createElement('td');
+        let buttonVerInfos = document.createElement('button');
+        let buttonRemoverInfo = document.createElement('button');
+
+        tr.setAttribute('id', 'tr_' + horario.nomePet + '_' + contador);
+        td.setAttribute('id', 'td_' + horario.nomePet + '_' + contador);
+        td.innerHTML = horario.nomePet + ' - ' + horario.dataHora;
+
+        buttonVerInfos.setAttribute('id', 'view_' + horario.nomePet + '_' + contador);
+        buttonVerInfos.setAttribute('type', 'button');
+        buttonVerInfos.setAttribute('class', 'btn button-style-row');        
+        buttonVerInfos.innerHTML = 'Infos';
+
+        buttonRemoverInfo.setAttribute('id', 'remove_' + horario.nomePet + '_' + contador);
+        buttonRemoverInfo.setAttribute('type', 'button');
+        buttonRemoverInfo.setAttribute('class', 'btn button-style-row');     
+        buttonRemoverInfo.setAttribute('onclick', 'removerLinhaTabela(event);');  
+        buttonRemoverInfo.innerHTML = 'Remover';
+    
+        tbodyTable.append(tr);
+        tr.append(td);
+        td.appendChild(buttonRemoverInfo); 
+        td.appendChild(buttonVerInfos); 
+    }   
 });
 
 function removerLinhaTabela(evento) {
@@ -107,7 +112,12 @@ function removerLinhaTabela(evento) {
 
     if(linhaRemover) {     
 
-        let horarioRemover = localStorage.getItem('dataHoraPet');
+        let horarioSplited = linhaRemover.parentElement !== null
+            && linhaRemover.parentElement.parentElement !== null
+            && linhaRemover.parentElement.parentElement.innerText !== null
+            && linhaRemover.parentElement.parentElement.innerText.split('Remover');
+
+        let horarioRemover = horarioSplited[0].toString().trimEnd();
 
         let obj = {
             horarioRemover: horarioRemover

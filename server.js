@@ -40,7 +40,7 @@ app.get("/buscarhorario/:nomePet", (req, res) => {
     
     let horarioEncontrado = moduloBuscarAgendamento.buscarAgendamento(nomePetFiltro);
     
-    if(horarioEncontrado) {        
+    if(horarioEncontrado.length > 0) {        
         res.status(200).send(horarioEncontrado);
     } else {
         res.status(404).send('Não foi encontrado nenhum horário para este Pet!');

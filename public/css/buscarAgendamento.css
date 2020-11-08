@@ -3,7 +3,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     border: none;
-    
+
     font-family: 'Segoe UI';
 }
 
@@ -49,4 +49,27 @@ table {
     border-radius: 5px;
     padding: 3px 8px 3px 8px;
     font-size: 12px;
+}
+
+.button-style {
+    background-color: #828282;
+    color: white;  
+    font-size: 16px;
+    border-radius: 5px;    
+    margin-left: 5px;
+    text-align: center;
+}
+
+.button-style:hover {
+    background-color: #828282;
+    color: white; 
+    font-weight: 600;
+}
+
+.button-position {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 3%;
+    margin-right: 2%;
 }
