@@ -11,7 +11,7 @@ table {
     width: 50% !important;
 }
 
-.input-group {
+.div-button-search {
     width: 50% !important;
 }
 
@@ -72,4 +72,39 @@ table {
     bottom: 0;
     margin-bottom: 3%;
     margin-right: 2%;
+}
+
+.card_interno { 
+    max-width: 350px;
+    margin: auto;  
+}
+
+.type-of-field {
+    background-color: #acf69f;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;  
+}
+
+.modal-info-pet {
+    font-family: 'Segoe UI';
+    background-image: url("/public/img/fundoBrancoSeg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;  
+}
+
+.modal-title {    
+    font-size: 20px;
+    text-align: center;
+    width: -webkit-fill-available;    
+}
+
+.modal-button-search-body {
+    font-size: 18px;
+}
+
+.modal-button-search {
+    font-family: 'Segoe UI';    
+    background-color: #f7e4e1;
 }
