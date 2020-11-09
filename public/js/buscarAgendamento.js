@@ -12,7 +12,11 @@ $(document).ready(() => {
 
     $('#novo-agendamento').on('click', () => {
         window.location.href = '/agendamento';
-    });   
+    }); 
+    
+    $('#sair').on('click', () => {
+        window.location.href = '/';
+    });
 
     function buscarHorarioPet(nomePet) {
         $.ajax({
@@ -29,9 +33,15 @@ $(document).ready(() => {
     }
 
     function adicionarValoresNaTabela(horarios) {
+        let usuario = window.localStorage.getItem('usuarioPet');
+
+        if(usuario === null || usuario === undefined) {
+            usuario = "PetUmHorario";
+        }
+
         for(let i=0; i < horarios.length; i++) {
             let contador = i +  1;
-            addValorNaTabela(horarios[i], contador);   
+            addValorNaTabela(horarios[i], contador, usuario);   
         }                 
     }
 
@@ -40,10 +50,10 @@ $(document).ready(() => {
 
         while(tbodyTable.rows.length > 0) {
             tbodyTable.deleteRow(0);
-        }
+        }        
     }    
 
-    function addValorNaTabela(horario, contador) {
+    function addValorNaTabela(horario, contador, usuario) {
 
         if(horario) {
             let insereNaTela = true;
@@ -52,7 +62,7 @@ $(document).ready(() => {
             insereNaTela = verificarSeOValorEstaNaTabela(tbodyTable, horario);
 
             if(insereNaTela) {
-                addLinhaNaTabela(tbodyTable, horario, contador);                            
+                addLinhaNaTabela(tbodyTable, horario, contador, usuario);                            
             }            
         }                                
     }
@@ -79,7 +89,7 @@ $(document).ready(() => {
         return insereNaTela;
     }
 
-    function addLinhaNaTabela(tbodyTable, horario, contador) {        
+    function addLinhaNaTabela(tbodyTable, horario, contador, usuario) {        
         let tr = document.createElement('tr');
         let td = document.createElement('td');
         let buttonVerInfos = document.createElement('button');
@@ -107,11 +117,11 @@ $(document).ready(() => {
         td.appendChild(buttonRemoverInfo); 
         td.appendChild(buttonVerInfos); 
 
-        montarInfosModal(horario, contador);
+        montarInfosModal(horario, contador, usuario);
     }    
 });
 
-function montarInfosModal(horario, contador) {
+function montarInfosModal(horario, contador, usuario) {
 
     criarModal(horario, contador);
 
@@ -143,6 +153,9 @@ function montarInfosModal(horario, contador) {
     let divInputGroupDataHoraPet = document.createElement('div');
     divInputGroupDataHoraPet.setAttribute('class', 'input-group mb-4 px-4');
 
+    let divInputGroupUsuario = document.createElement('div');
+    divInputGroupUsuario.setAttribute('class', 'input-group mb-4 px-4');
+
     let divInputGroupPrependNomePet = document.createElement('div');
     divInputGroupPrependNomePet.setAttribute('class', 'input-group-prepend');
 
@@ -154,6 +167,9 @@ function montarInfosModal(horario, contador) {
 
     let divInputGroupPrependDataHora = document.createElement('div');
     divInputGroupPrependDataHora.setAttribute('class', 'input-group-prepend');   
+
+    let divInputGroupPrependUsuario = document.createElement('div');
+    divInputGroupPrependUsuario.setAttribute('class', 'input-group-prepend');  
 
     let spanNomePet = document.createElement('span');
     let inputNomePet = document.createElement('input');
@@ -205,18 +221,33 @@ function montarInfosModal(horario, contador) {
     inputDataHoraPet.setAttribute('class', 'form-control');
     inputDataHoraPet.setAttribute('disabled', 'true');
     inputDataHoraPet.setAttribute('value', horario.dataHora);    
-    inputDataHoraPet.innerHTML = horario.dataHora;    
+    inputDataHoraPet.innerHTML = horario.dataHora;   
+    
+    let spanUsuario = document.createElement('span');
+    let inputUsuario = document.createElement('input');
+
+    spanUsuario.setAttribute('id', 'span-' + usuario + '-' + contador);
+    spanUsuario.setAttribute('class', 'input-group-text type-of-field');
+    spanUsuario.innerHTML = 'Dono';
+
+    inputUsuario.setAttribute('id', 'input-datahora-pet');
+    inputUsuario.setAttribute('class', 'form-control');
+    inputUsuario.setAttribute('disabled', 'true');
+    inputUsuario.setAttribute('value', usuario);    
+    inputUsuario.innerHTML = usuario;
 
     corpo.append(divCardInterno);
     divCardInterno.append(divInputGroupNomePet);
     divCardInterno.append(divInputGroupRacaPet);
     divCardInterno.append(divInputGroupServicoPet);
     divCardInterno.append(divInputGroupDataHoraPet);
+    divCardInterno.append(divInputGroupUsuario);
 
     divInputGroupNomePet.append(divInputGroupPrependNomePet);
     divInputGroupRacaPet.append(divInputGroupPrependRacaPet);
     divInputGroupServicoPet.append(divInputGroupPrependServicoPet);
     divInputGroupDataHoraPet.append(divInputGroupPrependDataHora);
+    divInputGroupUsuario.append(divInputGroupPrependUsuario)
 
     divInputGroupPrependNomePet.append(spanNomePet);
     divInputGroupNomePet.append(inputNomePet);
@@ -229,6 +260,9 @@ function montarInfosModal(horario, contador) {
 
     divInputGroupPrependDataHora.append(spanDataHoraPet);
     divInputGroupDataHoraPet.append(inputDataHoraPet);
+
+    divInputGroupPrependUsuario.append(spanUsuario);
+    divInputGroupUsuario.append(inputUsuario);
 }
 
 function criarModal(horario, contador) {
@@ -307,7 +341,7 @@ function removerLinhaTabela(evento) {
                 alert('Ocorreu um erro ao tentar remover o agendamento!');
             }
         });
-    }    
+    }        
 }
 
 function removerDaTela(linhaRemover) {

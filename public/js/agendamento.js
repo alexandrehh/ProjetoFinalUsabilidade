@@ -29,6 +29,9 @@ $(document).ready(() => {
         }
     });
 
+    $('#sair').on('click', () => {
+        window.location.href = '/';
+    });
 
     $('#buscar-horario').on('click', () => {
         window.location.href = '/buscarhorario';            

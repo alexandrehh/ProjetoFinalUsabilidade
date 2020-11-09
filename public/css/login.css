@@ -30,3 +30,8 @@ body {
   font-weight: 600;
   margin-left: 5px;
 }
+
+.feedback {
+  color: red;
+  font-size: 12px;   
+}
