@@ -61,15 +61,7 @@ $(document).ready(() => {
         $('#raca-pet')[0].value = '';
         $('#servico-pet')[0].value = '--Selecione uma opção--';
        $('#data-hora')[0].value = '';
-    }
-
-    function abrirModal(mensagem) {        
-        let title = $('.modal-title');
-        let body = $('.modal-body');
-
-        title.innerHTML = 'Uhuull';
-        body.innerHTML = mensagem;     
-    }
+    }  
 
     function formatarHora(dataHora) {
         let horaSplited = dataHora.split('T');
