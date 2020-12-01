@@ -10,14 +10,14 @@ $(document).ready(() => {
         if(existeAlgumInputVazio) {
             validarCampos();
         } else {
-            salvarInfoUsuarioLocalStorage(usuario);
+            // salvarInfoUsuarioLocalStorage(usuario);
             window.location.href = 'agendamento';
         }
     });
 
-    function salvarInfoUsuarioLocalStorage(usuario) {
-       window.localStorage.setItem('usuarioPet', usuario);
-    }
+    // function salvarInfoUsuarioLocalStorage(usuario) {
+    //    window.localStorage.setItem('usuarioPet', usuario);
+    // }
 
     function validarCampos() {
         let user = $('#input_login').val();

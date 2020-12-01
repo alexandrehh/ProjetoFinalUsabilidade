@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/public/css/agendamento.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/public/css/agendamento.css" />
 
-    <script src="/public/js/jquery-3.5.1.min.js"></script>
-    <script src="/public/js/agendamento.js"></script>
+  <script src="/public/js/jquery-3.5.1.min.js"></script>
+  <script src="/public/js/agendamento.js"></script>
 </head>
-<body>  
+
+<body>
   <div class="container-fluid py-3 align-middle">
-      <div class="card card-size my-5 py-4 px-5">        
-          <div class="d-flex justify-content-center mb-5">
-              <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
+    <div class="card card-size my-5 py-4 px-5">
+      <div class="d-flex justify-content-center mb-5">
+        <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
+      </div>
+      <div class="card-interno">
+        <form action="/agendamento" method="post">
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text type-of-field"><i class="asterisk">*</i> Nome do Pet</span>
+            </div>
+            <input name="nome_pet" id="nome-pet" type="text" required class="form-control" placeholder="Digite nome do pet"
+              aria-label="Digite nome do pet" aria-describedby="basic-addon1" style="display: block;">
           </div>
-          <div class="card-interno">
-              <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text type-of-field" ><i class="asterisk">*</i> Nome do Pet</span>
-                  </div>
-                  <input id="nome-pet" type="text" required class="form-control" placeholder="Digite nome do pet" aria-label="Digite nome do pet" aria-describedby="basic-addon1" style="display: block;">                 
+          <span id="feedback-nome-pet" class="feedback"></span>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text type-of-field"><i class="asterisk">*</i> Raça do pet</span>
+            </div>
+            <input name="raca_pet" id="raca-pet" type="text" required class="form-control" placeholder="Digite a raça do pet"
+              aria-label="Digite a raça do pet" aria-describedby="basic-addon1">
+          </div>
+          <span id="feedback-raca-pet" class="feedback"></span>
+          <div class="input-group mb-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text type-of-field" for="servico-pet"><i class="asterisk">*</i> Serviços
+                  Pet</label>
               </div>
-              <span id="feedback-nome-pet" class="feedback"></span>                               
-              <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text type-of-field"><i class="asterisk">*</i> Raça do pet</span>                      
-                  </div>
-                  <input id="raca-pet" type="text" required class="form-control" placeholder="Digite a raça do pet" aria-label="Digite a raça do pet" aria-describedby="basic-addon1">
-              </div>                
-              <span id="feedback-raca-pet" class="feedback"></span> 
-              <div class="input-group mb-4">                                       
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text type-of-field" for="servico-pet"><i class="asterisk">*</i> Serviços Pet</label>
-                      </div>
-                      <select class="custom-select" id="servico-pet" required>
-                        <option selected> --Selecione uma opção-- </option>
-                        <option value="banho">Banho</option>
-                        <option value="tosa">Tosa</option>
-                        <option value="banho-tosa">Banho e Tosa</option>
-                      </select>                        
-                    </div>
-              </div>
-              <span id="feedback-servico-pet" class="feedback"></span>
-              <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text type-of-field"><i class="asterisk"> *</i> Data/Hora</span>
-                  </div>
-                  <input id="data-hora" type="datetime-local" required class="form-control" aria-describedby="basic-addon1">                    
-              </div>                 
-              <span id="feedback-data-hora" class="feedback"></span>  
-              <div class="button-position">
-                  <button id="sair" type="button" class="btn button-style">Sair</button>     
-                  <button id="buscar-horario" type="button" class="btn button-style">Buscar Horários</button>           
-                  <button id="salvar-horario" type="button" class="btn button-style">Salvar Horário</button>
-              </div>                                    
-          </div>           
-      </div>        
+              <select name="servico_pet" class="custom-select" id="servico-pet" required>
+                <option selected> --Selecione uma opção-- </option>
+                <option value="banho">Banho</option>
+                <option value="tosa">Tosa</option>
+                <option value="banho-tosa">Banho e Tosa</option>
+              </select>
+            </div>
+          </div>
+          <span id="feedback-servico-pet" class="feedback"></span>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text type-of-field"><i class="asterisk"> *</i> Data/Hora</span>
+            </div>
+            <input name="data_servico" id="data-hora" type="datetime-local" required class="form-control" aria-describedby="basic-addon1">
+          </div>
+          <span id="feedback-data-hora" class="feedback"></span>
+          <div class="button-position">
+            <button id="buscar-horario" type="button" class="btn button-style">Buscar Horários</button>
+            <button id="salvar-horario" type="submit" class="btn button-style">Salvar Horário</button>
+          </div>
+        </form>
+        <div class="button-position">
+          <form action="/logout" method="post" class="mr-1">
+            <button id="sair" type="submit" class="btn button-style">Sair</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
+
 </html>

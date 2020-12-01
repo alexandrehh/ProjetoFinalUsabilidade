@@ -19,26 +19,28 @@
                 <img src="/public/img/PetUmHorarioTransparent.png" alt="PetUmHorario">
             </div>
             <div class="card_interno">
-                <div id="div_login" class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-transparent border-right-0 pr-0">👤</span>
+                <form action="/" method="post">
+                    <div id="div_login" class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0 pr-0">👤</span>
+                        </div>
+                        <input id="email" type="text" name="email" class="form-control border-left-0" placeholder="Email">
                     </div>
-                    <input id="input_login" type="text" name="login" class="form-control border-left-0" placeholder="Login">
-                </div>
-                <span id="feedbackLogin" class="feedback"></span>
-    
-                <div id="div_senha" class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-transparent border-right-0 pr-0">🔐</span>
+                    <span id="feedbackLogin" class="feedback"></span>
+        
+                    <div id="div_senha" class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0 pr-0">🔐</span>
+                        </div>
+                        <input id="password" type="password" name="password" class ="form-control border-left-0" placeholder="Senha" />
                     </div>
-                    <input id="input_senha" type="password" name="password" class ="form-control border-left-0" placeholder="Senha" />
-                </div>
-                <span id="feedbackSenha" class="feedback"></span>
-    
-                <div class="d-flex flex-column">                    
-                    <button id="login" class="btn button-style mb-3">Login</button>
-                    <button id="novo_usuario" class="btn button-style mb-3">Cadastre-se</a> 
-                </div> 
+                    <span id="feedbackSenha" class="feedback"></span>
+        
+                    <div class="d-flex flex-column">                    
+                        <button id="login" type="submit" class="btn button-style mb-3">Login</button>
+                        <a href="/cadastro" id="novo_usuario" class="btn button-style mb-3">Cadastre-se</a> 
+                    </div>
+                </form> 
             </div>
         </div>
     </div>
