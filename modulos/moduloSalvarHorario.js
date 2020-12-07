@@ -6,7 +6,7 @@ let salvarHorario = (horario) => {
 
     if(moduloSalvarHorario.listaHorarios.length > 0) {        
         for(let i=0; i < moduloSalvarHorario.listaHorarios.length; i++) {               
-            if(moduloSalvarHorario.listaHorarios[i].dataHora === horario.dataHora) {
+            if(moduloSalvarHorario.listaHorarios[i].dataHora == horario.dataHora) {
                 return 'Este horário não esta disponivel!';
             } else {
                 moduloSalvarHorario.listaHorarios.push(horario);
